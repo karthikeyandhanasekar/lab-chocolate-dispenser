@@ -104,12 +104,11 @@ function noOfChocolates(chocolate) {
 }
 
 //Progression 6: Sort chocolates based on count in each color. Return array of colors
+
 function sortChocolateBasedOnCount(chocolate) {
-    console.log(chocolate)
     let arr = []
-    let temp = []
     let output = []
-    let uniquearr = [...new Set(chocolate)]
+    let uniquearr = [...new Set(["purple","silver","red","crimson","blue","green","pink"])]
     for (const i of uniquearr) {
         let count = 0
         for (const j of chocolate) {
@@ -117,33 +116,27 @@ function sortChocolateBasedOnCount(chocolate) {
                 count += 1
 
         }
-        temp.push(count)
         arr.push([i, count])
 
 
     }
-
-    temp.sort().reverse()
-    for (const i of temp) {
-        for (const j of arr) {
-            let value = j[1]
-            if (i === value)
-                output.push(j[0])
-
+        arr.sort(function(a,b)
+        {
+            return b[1]-a[1]
+        })
+        console.log(arr)
+        for (const i of arr) {
+            let x=0
+           for (let index = 0; index < i[1]; index++) {
+               output.push(i[0])
+               
+           }
+            
         }
-
-
-    }
-    output = [...new Set(output)]
-    console.log(output)
-    return chocolate
-
-
-
-
-
-
+        console.log(output)
+        return output
 }
+
 
 //Progression 7: Change ___ chocolates of ____ color to ____ color
 function changeChocolateColor(chocolate, number, color, finalcolor) {
